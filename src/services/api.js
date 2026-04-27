@@ -37,8 +37,9 @@ api.interceptors.response.use(
       localStorage.removeItem("careconnect_token");
 
       // optional: redirect to login (safe UX)
-      if (!window.location.pathname.includes("/login")) {
-        window.location.href = "/login";
+      if (!window.location.hash.includes("/login")) {
+        const baseUrl = import.meta.env.BASE_URL || "/";
+        window.location.href = `${baseUrl}#/login`;
       }
     }
 
